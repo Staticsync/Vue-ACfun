@@ -29,7 +29,7 @@
 ![image](https://github.com/youhonglian/Vue-bilibili/blob/master/src/assets/image/bilibili.gif)
 
 ### 在线预览
- https://youhonglian.github.io/vue-bilibili-master/#/
+
 
 
 
