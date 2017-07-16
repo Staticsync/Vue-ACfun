@@ -12,23 +12,24 @@ Vue.use(VueAxios, axios)
 const store = new Vuex.Store({
     // 状态
     state: {
+        isLogin: false,
         showBanner: { 'data': []},
         displayHeader: true,
-    },
-    mutations: {
-
-    },
-    actions: {
-     getInitShowBanner() {
-       return new Promise((resolve, reject) => {
-        Vue.axios.get('http://api.bilibili.com/x/web-show/res/loc?callback=jQuery17205969745067413896_1482805801285&jsonp=jsonp&pf=0&id=23&_=1482805801599')
-          .then(res => {
-            // resolve(res.data.showBanner)
-            console.log(res.data)
-          })
-      })
-     },
     }
+    // mutations: {
+
+    // },
+    // actions: {
+    //  getInitShowBanner() {
+    //    return new Promise((resolve, reject) => {
+    //     Vue.axios.get('http://api.bilibili.com/x/web-show/res/loc?callback=jQuery17205969745067413896_1482805801285&jsonp=jsonp&pf=0&id=23&_=1482805801599')
+    //       .then(res => {
+    //         // resolve(res.data.showBanner)
+    //         console.log(res.data)
+    //       })
+    //   })
+    //  },
+    // }
 
 })
 export default store

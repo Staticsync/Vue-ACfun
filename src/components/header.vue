@@ -49,6 +49,7 @@
     </div>
     <transition name="fold">
       <div class="b-sidebar" v-if="sidebarShow">
+          <!--登录前-->
         <div class="b-user" :style="{backgroundColor: skinColor}">
           <div class="user-desc">
             <div>
@@ -67,6 +68,8 @@
             <button>快速注册</button>
           </div>
         </div>
+
+
         <div class="b-sideItem">
           <button v-for="(item,$index) in items" @click="selectStyle (item, $index) " :class="{'active':item.active,'unactive':!item.active}">
                           {{item.select}}
@@ -90,6 +93,9 @@
             <li class="item icon-setting">&nbsp&nbsp设置<span class="number"></span></li>
   
             <li class="item icon-idea">&nbsp&nbsp意见反馈<span class="number"></span></li>
+
+            <li class="item" v-if="login" @click="logout">&nbsp&nbsp退出登录<span class="number"></span></li>
+
           </ul>
         </div>
       </div>
@@ -120,6 +126,7 @@
 
 <script>
   import Vue from 'vue'
+  import {mapGetters,mapActions} from 'vuex'
   export default {
     data() {
       return {
@@ -133,6 +140,16 @@
         url: ''
       }
     },
+    	mounted () {
+		this.$store.dispatch('setCurindex', 1)
+			console.log(this.$store.state.mutation.curindex)
+		let username = window.localStorage.getItem('username')
+		this.$store.dispatch('setUsername', username)
+		this.isLogin = this.$store.state.mutation.isLogin
+		console.log(window.localStorage.getItem('useravatar'))
+        this.url = window.localStorage.getItem('useravatar')
+		console.log(this.isLogin)	
+	},
     created() {
       this.axios.get('/api/show-list')
         .then(res => {
@@ -164,6 +181,38 @@
           path: '/login'
         })
       },
+      logout () {
+			window.localStorage.clear()
+			this.$store.dispatch('noLogin')
+            this.$router.push({path: '/my'});
+		},
+    		loadImg () {
+		     let vm = this;
+		     let add = document.querySelector('input[type=file]')
+		     add.click()
+
+		     return false;
+		},
+    		fileInput (e) {
+		     var files = e.target.files
+		     console.log(files)
+		     if(!files.length) return;
+		     this.createImage(files, e);
+		},
+
+    	   	createImage (files, e) {
+		     let vm = this;
+		     // lrz图片先压缩在加载、
+		     this.lrz(files[0], { width: 480 }).then(function(rst) {
+		      vm.url = rst.base64;
+		      window.localStorage.setItem('useravatar',vm.url)
+		      return rst;
+		     }).always(function() {
+		     // 清空文件上传控件的值
+		     e.target.value = null;
+		     });
+
+		},
       register() {
         this.sidebarShow = !this.sidebarShow
         this.$router.push({
@@ -237,5 +286,6 @@
 <style lang="scss" scoped>
   @import '../assets/css/header.scss';
   @import '../assets/css/style.css';
+ 
 </style>
 
