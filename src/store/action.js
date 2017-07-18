@@ -6,6 +6,22 @@ export default {
 			console.log('没有登录')
 		}	
 	},
+		skinColor: ({ commit }) => {
+		commit('skinColor')
+	},
+		showList: ({ commit }) => {
+		commit('showList')
+	},
+		searchList: ({ commit }) => {
+		commit('searchList')
+	},
+		isListShow: ({ commit }) => {
+		commit('isListShow')
+	},
+	 searchbarShow: ({ commit }) => {
+		commit('searchbarShow')
+	},
+	
 	noLogin: ({ commit }) => {
 		if(window.localStorage.getItem('username') == null && window.localStorage.getItem('password') == null){
 			commit('noLogin')

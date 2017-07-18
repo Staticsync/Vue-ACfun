@@ -140,23 +140,16 @@
         url: ''
       }
     },
-    	mounted () {
-		this.$store.dispatch('setCurindex', 1)
-			console.log(this.$store.state.mutation.curindex)
-		let username = window.localStorage.getItem('username')
-		this.$store.dispatch('setUsername', username)
-		this.isLogin = this.$store.state.mutation.isLogin
-		console.log(window.localStorage.getItem('useravatar'))
-        this.url = window.localStorage.getItem('useravatar')
-		console.log(this.isLogin)	
-	},
     created() {
       this.axios.get('/api/show-list')
         .then(res => {
           this.$store.state.showList = res.data.showList;
         })
     },
-    computed: {
+    computed: 
+    // mapGetters(['login','skinColor','showList','searchList','username','isListShow','searchbarShow']),
+    {
+      
       skinColor() {
         return this.$store.state.skinColor;
       },

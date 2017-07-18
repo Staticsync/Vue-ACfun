@@ -15,8 +15,6 @@
                         <span class="showTitle">{{item.title}}</span>
                         <div class="showUser">
                             <span class="showAuthor">{{item.author}}</span>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            <span class="showNum">{{item.play}}</span>
                         </div>
                     </div>
                 </div>
@@ -38,8 +36,7 @@
                         <span class="showTitle">{{item.title}}</span>
                         <div class="showUser">
                             <span class="showAuthor">{{item.author}}</span>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            <span class="showNum">{{item.play}}</span>
+                        
                         </div>
                     </div>
                 </div>
