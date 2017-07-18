@@ -1,4 +1,5 @@
 # vue-ACfun-master
+结构太混乱，没有将导航菜单独立抽取出来，导致点击其他（登录、注册、历史记录）等页面的时候也会带上导航菜单，这显然是不符合逻辑和实际场景的，正在重写中
 
 > A Vue.js project
 
@@ -20,13 +21,13 @@
 ### 实现的功能
 
   * B站（A站的API找不到，用B站的）首页（轮播图、直播、推荐、番剧、排行榜、分区）
-  * 切换主题（黑色和粉色的主题）
+  * 切换主题
   * 搜索视频
   * 播放页面（简介、评论显示、发表评论、点赞、番剧选集）
   
   
 ### 项目展示
-![image](https://github.com/youhonglian/Vue-bilibili/blob/master/src/assets/image/bilibili.gif)
+
 
 ### 在线预览
 
